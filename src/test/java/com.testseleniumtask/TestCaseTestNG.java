@@ -15,7 +15,7 @@ public class TestCaseTestNG {
 
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver","F:\\Soft\\geckodriver\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver","F:\\Soft\\geckodriver\\geckodriver.exe"); //Поправить адрес к драйверу
 		driver = new FirefoxDriver();
 		//System.setProperty("webdriver.chrome.driver","F:\\Soft\\chromedriver\\chromedriver.exe");
 		//driver = new ChromeDriver();
@@ -27,9 +27,9 @@ public class TestCaseTestNG {
 	public void testCaseJobOffer() throws Exception {
 		driver.get(baseUrl + "/admin/");
 		driver.findElement(By.id("id_username")).clear();
-		driver.findElement(By.id("id_username")).sendKeys("");
+		driver.findElement(By.id("id_username")).sendKeys(""); //Добавить логин
 		driver.findElement(By.id("id_password")).clear();
-		driver.findElement(By.id("id_password")).sendKeys("");
+		driver.findElement(By.id("id_password")).sendKeys(""); //Добавить пароль
 		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
 		try {
 			assertEquals(driver.findElement(By.cssSelector("h1.dashboard-title")).getText(), "Панель управления");
