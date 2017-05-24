@@ -27,9 +27,9 @@ public class TestCaseTestNG {
 	public void testCaseJobOffer() throws Exception {
 		driver.get(baseUrl + "/admin/");
 		driver.findElement(By.id("id_username")).clear();
-		driver.findElement(By.id("id_username")).sendKeys("silenium");
+		driver.findElement(By.id("id_username")).sendKeys("");
 		driver.findElement(By.id("id_password")).clear();
-		driver.findElement(By.id("id_password")).sendKeys("super_password");
+		driver.findElement(By.id("id_password")).sendKeys("");
 		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
 		try {
 			assertEquals(driver.findElement(By.cssSelector("h1.dashboard-title")).getText(), "Панель управления");
