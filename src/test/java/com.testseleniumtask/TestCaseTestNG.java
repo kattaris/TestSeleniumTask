@@ -24,12 +24,12 @@ public class TestCase {
 	}
 
 	@Test
-	public void testCase() throws Exception {
+	public void testCaseJobOffer() throws Exception {
 		driver.get(baseUrl + "/admin/");
 		driver.findElement(By.id("id_username")).clear();
-		driver.findElement(By.id("id_username")).sendKeys("");
+		driver.findElement(By.id("id_username")).sendKeys("silenium");
 		driver.findElement(By.id("id_password")).clear();
-		driver.findElement(By.id("id_password")).sendKeys("");
+		driver.findElement(By.id("id_password")).sendKeys("super_password");
 		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
 		try {
 			assertEquals(driver.findElement(By.cssSelector("h1.dashboard-title")).getText(), "Панель управления");
@@ -37,13 +37,11 @@ public class TestCase {
 			verificationErrors.append(e.toString());
 		}
 		driver.findElement(By.cssSelector("a.addlink > span.icon")).click();
-
 		try {
 			assertEquals(driver.findElement(By.cssSelector("#content > h1")).getText(), "Добавить entry");
 		} catch (Error e) {
 			verificationErrors.append(e.toString());
 		}
-
 		driver.findElement(By.id("id_title")).clear();
 		driver.findElement(By.id("id_title")).sendKeys("Title43565463456");
 		driver.findElement(By.id("id_slug")).clear();
@@ -52,20 +50,22 @@ public class TestCase {
 		driver.findElement(By.id("id_text_markdown")).sendKeys("Slug43565463456");
 		driver.findElement(By.id("id_text")).clear();
 		driver.findElement(By.id("id_text")).sendKeys("Slug43565463456");
-		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+		//driver.findElement(By.cssSelector("input[class=\"default\"]")).click();
+		driver.findElement(By.className("default")).click();
 		driver.get(baseUrl + "/blog/");
 		driver.findElement(By.linkText("Title43565463456")).click();
 		driver.get(baseUrl + "/admin/blog/entry");
 		driver.findElement(By.linkText("Title43565463456")).click();
 		driver.findElement(By.linkText("Удалить")).click();
 		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+		driver.findElement(By.linkText("Выйти")).click();
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
-		if (!"".equals(verificationErrorString)) {
+		if ("".equals(verificationErrorString)) {
 			fail(verificationErrorString);
 		}
 	}
