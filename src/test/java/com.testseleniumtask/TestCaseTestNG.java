@@ -7,7 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 
-public class TestCase {
+public class TestCaseTestNG {
 	private WebDriver driver;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;
@@ -50,7 +50,6 @@ public class TestCase {
 		driver.findElement(By.id("id_text_markdown")).sendKeys("Slug43565463456");
 		driver.findElement(By.id("id_text")).clear();
 		driver.findElement(By.id("id_text")).sendKeys("Slug43565463456");
-		//driver.findElement(By.cssSelector("input[class=\"default\"]")).click();
 		driver.findElement(By.className("default")).click();
 		driver.get(baseUrl + "/blog/");
 		driver.findElement(By.linkText("Title43565463456")).click();
